@@ -1,0 +1,115 @@
+!-------------------------------------------------------------------------------
+! Xft settings
+!-------------------------------------------------------------------------------
+
+Xft.dpi:                    96
+Xft.antialias:              true
+Xft.rgba:                   rgb
+Xft.hinting:                true
+Xft.hintstyle:              hintslight
+
+!-------------------------------------------------------------------------------
+! URxvt settings
+! Colours lifted from Solarized (http://ethanschoonover.com/solarized)
+! More info at:
+! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
+!-------------------------------------------------------------------------------
+
+URxvt.depth:                32
+URxvt.geometry:             90x30
+URxvt.transparent:          false
+URxvt.fading:               0
+! URxvt.urgentOnBell:         true
+! URxvt.visualBell:           true
+URxvt.loginShell:           true
+! URxvt.saveLines:            50
+URxvt.internalBorder:       3
+URxvt.lineSpace:            0
+
+! Fonts
+URxvt.allow_bold:           True
+URxvt*font: xft:Ubuntu Mono:size=13, xft:Source Han Sans CN:size=11, xft:DejaVu Sans Mono:size=11
+
+! ! Fix font space
+! URxvt*letterSpace: -1
+
+! Scrollbar
+URxvt.scrollStyle:          rxvt
+URxvt.scrollBar:            false
+
+! Perl extensions
+! URxvt.perl-ext-common:      default,matcher
+! URxvt.matcher.button:       1
+! URxvt.urlLauncher:          google-chrome-stable
+
+! Cursor
+URxvt.cursorBlink:          true
+URxvt.cursorColor:          #657b83
+URxvt.cursorUnderline:      false
+
+! Pointer
+URxvt.pointerBlank:         true
+
+! Color source:
+! https://github.com/chriskempson/tomorrow-theme/blob/master/Xdefaults/Tomorrow%20Night
+
+URxvt.saveLines:32767
+URxvt.scrollBar: false
+
+URxvt*foreground:   #c5c8c6
+URxvt*background:   #1d1f21
+URxvt*cursorColor:  #aeafad
+URxvt*color0:       #000000
+URxvt*color1:       #912226
+URxvt*color2:       #778900
+URxvt*color3:       #ae7b00
+URxvt*color4:       #1d2594
+URxvt*color5:       #682a9b
+URxvt*color6:       #2b6651
+URxvt*color7:       #929593
+URxvt*color8:       #666666
+URxvt*color9:       #cc6666
+URxvt*color10:      #b5bd68
+URxvt*color11:      #f0c674
+URxvt*color12:      #81a2be
+URxvt*color13:      #b294bb
+URxvt*color14:      #8abeb7
+URxvt*color15:      #ecebec
+URxvt*colorUL: #c5f779
+URxvt*underlineColor: #c5f779
+ 
+!black
+xterm*color0:         #353535
+xterm*color8:         #666666
+!red
+xterm*color1:         #AE4747
+xterm*color9:         #EE6363
+!green
+xterm*color2:         #556B2F
+xterm*color10:        #9ACD32
+!brown/yellow
+xterm*color3:         #DAA520
+xterm*color11:        #FFC125
+!blue
+xterm*color4:         #6F99B4
+xterm*color12:        #7C96B0
+!magenta
+xterm*color5:         #8B7B8B
+xterm*color13:        #D8BFD8
+!cyan
+xterm*color6:         #A7A15E
+xterm*color14:        #F0E68C
+!white
+xterm*color7:         #DDDDDD
+xterm*color15:        #FFFFFF
+
+URxvt.perl-ext-common:      clipboard
+! URxvt.url-select.launcher:  google-chrome-stable
+! URxvt.url-select.underline: true
+! URxvt.keysym.M-u:           perl:url-select:select_next
+! URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+! URxvt.keysym.M-1:           perl:keyboard-select:activate
+! URxvt.keysym.M-s:           perl:keyboard-select:search
+URxvt.keysym.M-v:           perl:clipboard:paste
+URxvt.keysym.M-c:           perl:clipboard:copy
+! URxvt.keysym.M-C-v:         perl:clipboard:paste_escaped

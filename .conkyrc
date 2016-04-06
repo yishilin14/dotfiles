@@ -1,0 +1,59 @@
+out_to_x no
+own_window no
+out_to_console yes
+background no
+max_text_width 0
+
+# Update interval in seconds
+update_interval 1.0
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Shortens units to a single character (kiB->k, GiB->G, etc.). Default is off.
+short_units yes
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+# use_spacer should have an argument of left, right, or none
+use_spacer left
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+# template {"full_text": "", "color":"\#"},
+
+# Stuff after 'TEXT' will be formatted on screen
+TEXT
+[
+# Song
+{ "full_text": "${exec $HOME/.config/i3/scripts/song_title | iconv -t "UTF-8"}", "color": "\#AAAAAA" },
+
+# CPU
+{"full_text": "","separator":false},\
+# {"full_text": "CPU Usage:", "separator": false, "separator_block_width":5},
+{"full_text": "${cpu cpu1}%", "min_width":"00%", "separator": false, "color":"${if_match ${cpu cpu1} < 33}\#7f9f7f${else}${if_match ${cpu cpu1} > 66}\#dca3a3${else}\#c3bf9f${endif}${endif}"},
+{"full_text": "${cpu cpu2}%", "min_width":"00%", "separator": false, "color":"${if_match ${cpu cpu2} < 33}\#7f9f7f${else}${if_match ${cpu cpu2} > 66}\#dca3a3${else}\#c3bf9f${endif}${endif}"},
+{"full_text": "${cpu cpu3}%", "min_width":"00%", "separator": false, "color":"${if_match ${cpu cpu3} < 33}\#7f9f7f${else}${if_match ${cpu cpu3} > 66}\#dca3a3${else}\#c3bf9f${endif}${endif}"},
+{"full_text": "${cpu cpu4}%", "min_width":"00%", "separator": false, "color":"${if_match ${cpu cpu4} < 33}\#7f9f7f${else}${if_match ${cpu cpu4} > 66}\#dca3a3${else}\#c3bf9f${endif}${endif}"},
+{"full_text": "${cpu cpu5}%", "min_width":"00%", "separator": false, "color":"${if_match ${cpu cpu5} < 33}\#7f9f7f${else}${if_match ${cpu cpu5} > 66}\#dca3a3${else}\#c3bf9f${endif}${endif}"},
+{"full_text": "${cpu cpu6}%", "min_width":"00%", "separator": false, "color":"${if_match ${cpu cpu6} < 33}\#7f9f7f${else}${if_match ${cpu cpu6} > 66}\#dca3a3${else}\#c3bf9f${endif}${endif}"},
+{"full_text": "${cpu cpu7}%", "min_width":"00%", "separator": false, "color":"${if_match ${cpu cpu7} < 33}\#7f9f7f${else}${if_match ${cpu cpu7} > 66}\#dca3a3${else}\#c3bf9f${endif}${endif}"},
+{"full_text": "${cpu cpu8}%", "min_width":"00%", "color":"${if_match ${cpu cpu8} < 33}\#7f9f7f${else}${if_match ${cpu cpu8} > 66}\#dca3a3${else}\#c3bf9f${endif}${endif}"},
+
+# Memory
+{"full_text":"", "separator":false, "separator_block_width":5},\
+{"full_text": "${memperc}%", "min_width":"00%", "separator": false, "color":"${if_match ${memperc} < 33}\#7f9f7f${else}${if_match ${memperc} > 66}\#dca3a3${else}\#c3bf9f${endif}${endif}"},
+{"full_text": "${mem}/${memmax}", "color":"\#7f9f7f"},
+
+# Volume:
+{"full_text": "${if_match ${exec amixer -c 0 get Master | egrep -o '([0-9]+%)' | sed -e s/\%//}>65}${else}${if_match ${exec amixer -c 0 get Master | egrep -o '([0-9]+%)' | sed -e s/\%//}>20}${else}${if_match ${exec amixer -c 0 get Master | egrep -o '([0-9]+%)' | sed -e s/\%//}>0}${else}${endif}${endif}${endif}","separator":false,"separator_block_width":6},\
+{"full_text":"${exec amixer -c 0 get Master | egrep -o '([0-9]+%|\[(on|off)\])' | sed ':a;N;$!ba;s/\n/ /g'}","color":"\#7f9f7f","separator":true},\
+
+# Time
+{"full_text": "${time %Y-%m-%d}", "separator": false},
+{"full_text": "${time %H:%M:%S}"}
+],
