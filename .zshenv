@@ -14,3 +14,6 @@ if [[ `uname` == "Linux" ]]; then
     export EDITOR='vim'
 fi
 
+if [[ `uname` == "Darwin" ]]; then
+    export PATH=/Applications/Skim.app/Contents/SharedSupport/:$PATH
+fi
