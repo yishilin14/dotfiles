@@ -18,8 +18,18 @@ short_units yes
 # use_spacer should have an argument of left, right, or none
 use_spacer left
 
+# Use Xft? To let conky display Chinese, use xft!
+use_xft yes
+
+# Xft font when Xft is enabled
+xftfont wenquanyi bitmap song:size=10
+
+# Text alpha when using Xft
+xftalpha 0.6
+
 # Force UTF8? note that UTF8 support required XFT
-override_utf8_locale no
+# Choose "yes" if displaying Chinese fonts
+override_utf8_locale yes
 
 # number of cpu samples to average
 # set to 1 to disable averaging
@@ -30,7 +40,7 @@ cpu_avg_samples 2
 TEXT
 [
 # Song
-{ "full_text": "${exec $HOME/.config/i3/scripts/song_title | iconv -t "UTF-8"}", "color": "\#AAAAAA" },
+{ "full_text": "${exec $HOME/.config/i3/scripts/song_title | tr -d '"' | iconv -t "UTF-8" -c}", "color": "\#AAAAAA" },
 
 # CPU
 {"full_text": "","separator":false},\
