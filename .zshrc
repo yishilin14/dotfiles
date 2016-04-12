@@ -1,6 +1,9 @@
 # Set name of the theme to load.
 ZSH_THEME="robbyrussell"
 
+# Auto update without prompting
+DISABLE_UPDATE_PROMPT=true
+
 #####################################################
 # plugins 
 #####################################################
