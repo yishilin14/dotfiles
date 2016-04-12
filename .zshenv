@@ -1,8 +1,3 @@
-export PATH="$HOME/anaconda2/bin:$PATH"
-export PATH="$HOME/.gem/ruby/2.3.0/bin:$PATH"
-export PATH=$HOME/bin:$PATH
-
-
 if [[ `uname` == "Linux" ]]; then
     export http_proxy=http://proxy.cse.cuhk.edu.hk:8000
     export https_proxy=$http_proxy
