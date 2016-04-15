@@ -19,7 +19,7 @@ xset -b &
 feh --bg-scale "/home/yslin/.config/i3/images/dark_wallpaper.jpg" &
 dropbox start > /dev/null 2>&1 &
 fcitx-autostart > /dev/null 2>&1 &
-dunst > /dev/null 2>&1 &
-compton > /dev/null 2>&1 &
+dunst --config .config/dunst/dunstrc > /dev/null 2>&1 &
+compton --config .config/compton/compton.conf > /dev/null 2>&1 &
 exec i3
 
