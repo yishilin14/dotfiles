@@ -252,17 +252,17 @@ appname = Dropbox
 summary = "*deleted*"
 urgency = normal
 
-[signed_on]
-appname = Pidgin
-summary = "*signed on*"
-urgency = low
+# [signed_on]
+# appname = Pidgin
+# summary = "*signed on*"
+# urgency = low
 
-[signed_off]
-appname = Pidgin
-summary = *signed off*
-urgency = low
+# [signed_off]
+# appname = Pidgin
+# summary = *signed off*
+# urgency = low
 
 [says]
 appname = Pidgin
 summary = *says*
-urgency = critical
+urgency = normal 
