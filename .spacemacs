@@ -32,49 +32,50 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     html
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     better-defaults
-     emacs-lisp
-     git
-     markdown
-     org
-     dash
-     (latex :variables
-            latex-enable-auto-fill t
-            )
-     (shell :variables
-            shell-default-height 30
-            shell-default-position 'bottom)
-     (c-c++ :variables
-              c-c++-default-mode-for-headers 'c++-mode
-              c-c++-enable-clang-support t
-              )
-     (python :variables
-             python-enable-yapf-format-on-save t)
-     ;; auto-completion
      (auto-completion :variables
                       auto-completion-return-key-behavior 'complete
                       auto-completion-tab-key-behavior 'cycle
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-complete-with-key-sequence-delay 0.1
                       auto-completion-enable-sort-by-usage t)
-     spell-checking
-     (syntax-checking :variables
-                      syntax-checking-enable-tooltips nil)
-     semantic
-     version-control
-     gtags
-     ycmd
+     better-defaults
+     (c-c++ :variables
+            c-c++-default-mode-for-headers 'c++-mode
+            c-c++-enable-clang-support t
+            )
      (colors :variables
              colors-enable-nyan-cat-progress-bar t)
-     javascript
-     spotify
+     cscope
+     dash
+     emacs-lisp
+     git
+     gtags
+     html
      imenu-list
+     javascript
+     (latex :variables
+            latex-enable-auto-fill t
+            )
+     markdown
+     org
+     (python :variables
+             python-enable-yapf-format-on-save t)
+     semantic
+     (shell :variables
+            shell-default-height 30
+            shell-default-position 'bottom)
+     shell-scripts
+     spell-checking
+     spotify
+     (syntax-checking :variables
+                      syntax-checking-enable-tooltips nil)
+     version-control
+     ycmd
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -332,19 +333,32 @@ layers configuration. You are free to put any user code."
       (setq flycheck-clang-language-standard "c++11")
       (define-key c++-mode-map [f7] 'clang-format-buffer)
     ))
-  (setq-default c-default-style "google"
-                c-basic-offset 2)
   (setq company-idle-delay 0)
+  ;; http://stackoverflow.com/questions/6860750/how-to-enable-flyspell-mode-in-emacs-for-all-files-and-all-major-modes
+  (add-hook 'text-mode-hook 'flyspell-mode)
+  (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
   ;;==ycmd================================================================ 
    (cond
     ((spacemacs/system-is-mac) (set-variable 'ycmd-server-command '("python2" "/Users/yslin/ycmd/ycmd")))
-    ((spacemacs/system-is-linux) (set-variable 'ycmd-server-command '("python2" "/home/yslin/ycmd/ycmd"))))
+    ((spacemacs/system-is-linux) (set-variable 'ycmd-server-command '("python" "/home/yslin/ycmd/ycmd"))))
   (set-variable 'ycmd-global-config "~/.ycm_extra_conf.py")
   (setq ycmd-force-semantic-completion t)  
+  (add-hook 'sh-mode-hook 'ycmd-mode)
 
   ;;==orgmode============================================================= 
   (setq org-src-fontify-natively t)
+
+  ;;==web/js============================================================== 
+  (setq-default
+   ;; js2-mode
+   js2-basic-offset 2
+   ;; web-mode
+   css-indent-offset 2
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-attr-indent-offset 2)
 
   ;;==Others============================================================== 
   (global-linum-mode t)  ;; Show line number

@@ -169,6 +169,9 @@ for_window [class="Skype"] floating enable sticky disable move to workspace 4
 for_window [class="Pidgin"] floating enable sticky disable move to workspace 4
 for_window [class="feh"] floating enable
 
+# Moving window
+for_window [class="Mendeleydesktop.x86_64"] move to workspace 2
+
 # browser pop-ups
 for_window [window_role="pop-up"] floating enable
 no_focus [window_role="pop-up"]

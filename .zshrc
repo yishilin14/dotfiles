@@ -1,3 +1,6 @@
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
 # Set name of the theme to load.
 ZSH_THEME="robbyrussell"
 
@@ -11,31 +14,7 @@ DISABLE_UPDATE_PROMPT=true
 # for the autojump plugin
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
 
-source ~/Dropbox/dotfiles/zsh/zgen.zsh
-
-# check if there's no init script
-if ! zgen saved; then
-    echo "Creating a zgen save"
-
-    zgen oh-my-zsh
-
-    # plugins
-    zgen oh-my-zsh plugins/git
-    zgen oh-my-zsh plugins/sudo
-    zgen oh-my-zsh plugins/autojump
-    zgen oh-my-zsh plugins/command-not-found
-    zgen load zsh-users/zsh-syntax-highlighting
-    zgen load zsh-users/zsh-autosuggestions
-
-    # completions
-    zgen load zsh-users/zsh-completions src
-
-    # theme
-    zgen oh-my-zsh themes/arrow
-
-    # save all to init script
-    zgen save
-fi
+plugins=(git sudo autojump command-not-found)
 
 #####################################################
 # alias 
@@ -49,3 +28,4 @@ alias mntgwcse="sshfs yslin@gw.cse.cuhk.edu.hk:/uac/gds/yslin ~/unixfolder"
 alias ls="ls -color=auto"
 
 source $ZSH/oh-my-zsh.sh
+
