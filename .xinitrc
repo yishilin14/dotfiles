@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# Fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
 # Misc
 export GNOME_DESKTOP_SESSION_ID="01" # fool xdg-open
 
