@@ -146,7 +146,7 @@ values."
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Ubuntu Mono"
                                :size 17
-                               :weight normal 
+                               :weight normal
                                :width normal
                                :powerline-scale 1.5)
    ;; The leader key
@@ -288,15 +288,13 @@ before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   )
 
-;;====================================================================== 
+;;======================================================================
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
-  ;;==auto-completion===================================================== 
-
-  ;;==TeX================================================================= 
+  ;;==TeX=================================================================
   (setq TeX-source-correlate-mode t)
   (setq TeX-source-correlate-start-server t)
   (setq TeX-source-correlate-method 'synctex)
@@ -321,35 +319,38 @@ layers configuration. You are free to put any user code."
           ("Skim" "displayline -b -g %n %o %b")
           ("Zathura" "zathura-sync.sh %n:1:%b %o")))
 
-  ;;==c/c++=============================================================== 
+  ;;==c/c++===============================================================
   ;; Bind clang-format-region to C-M-tab in all modes:
   (global-set-key [C-M-tab] 'clang-format-region)
   ;; Bind clang-format-buffer to tab on the c++-mode only:
   (add-hook 'c++-mode-hook
-    (lambda ()
-      (setq company-clang-arguments '("-std=c++11"))
-      (setq flycheck-gcc-language-standard "c++11")
-      (setq flycheck-cppcheck-language-standard "c++11")
-      (setq flycheck-clang-language-standard "c++11")
-      (define-key c++-mode-map [f7] 'clang-format-buffer)
-    ))
+            (lambda ()
+              (setq company-clang-arguments '("-std=c++11"))
+              (setq flycheck-gcc-language-standard "c++11")
+              (setq flycheck-cppcheck-language-standard "c++11")
+              (setq flycheck-clang-language-standard "c++11")
+              (define-key c++-mode-map [f7] 'clang-format-buffer)
+              ))
   (setq company-idle-delay 0)
   ;; http://stackoverflow.com/questions/6860750/how-to-enable-flyspell-mode-in-emacs-for-all-files-and-all-major-modes
   (add-hook 'text-mode-hook 'flyspell-mode)
   (add-hook 'prog-mode-hook 'flyspell-prog-mode)
+  (setq-default c-default-style "linux")
+  (setq-default c-basic-offset 4)
+  (setq-default tab-width 4)
 
-  ;;==ycmd================================================================ 
-   (cond
-    ((spacemacs/system-is-mac) (set-variable 'ycmd-server-command '("python2" "/Users/yslin/ycmd/ycmd")))
-    ((spacemacs/system-is-linux) (set-variable 'ycmd-server-command '("python" "/home/yslin/ycmd/ycmd"))))
+  ;;==ycmd================================================================
+  (cond
+   ((spacemacs/system-is-mac) (set-variable 'ycmd-server-command '("python2" "/Users/yslin/ycmd/ycmd")))
+   ((spacemacs/system-is-linux) (set-variable 'ycmd-server-command '("python" "/home/yslin/ycmd/ycmd"))))
   (set-variable 'ycmd-global-config "~/.ycm_extra_conf.py")
-  (setq ycmd-force-semantic-completion t)  
+  (setq ycmd-force-semantic-completion t)
   (add-hook 'sh-mode-hook 'ycmd-mode)
 
-  ;;==orgmode============================================================= 
+  ;;==orgmode=============================================================
   (setq org-src-fontify-natively t)
 
-  ;;==web/js============================================================== 
+  ;;==web/js==============================================================
   (setq-default
    ;; js2-mode
    js2-basic-offset 2
@@ -360,12 +361,12 @@ layers configuration. You are free to put any user code."
    web-mode-code-indent-offset 2
    web-mode-attr-indent-offset 2)
 
-  ;;==Others============================================================== 
+  ;;==Others==============================================================
   (global-linum-mode t)  ;; Show line number
   (when (spacemacs/system-is-linux)
     (setq browse-url-browser-function 'browse-url-generic
           browse-url-generic-program "google-chrome-stable"))
-)
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -376,7 +377,10 @@ layers configuration. You are free to put any user code."
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
    (quote
-    ((flycheck-gcc-language-standard . c++11)
+    ((flycheck-disabled-checkers
+      (quote
+       (c/c++-clang)))
+     (flycheck-gcc-language-standard . c++11)
      (flycheck-cppcheck-language-standard . c++11)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
