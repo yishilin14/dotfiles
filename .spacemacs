@@ -377,7 +377,8 @@ layers configuration. You are free to put any user code."
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
    (quote
-    ((flycheck-disabled-checkers
+    ((TeX-command-extra-options . "-shell-escape")
+     (flycheck-disabled-checkers
       (quote
        (c/c++-clang)))
      (flycheck-gcc-language-standard . c++11)

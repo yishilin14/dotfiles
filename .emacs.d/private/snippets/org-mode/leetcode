@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: leetcode
+# key: leetcode_
+# --
+#+BEGIN_SRC c++
+// Runtime: $1, beat $2%
+$0
+#+END_SRC
