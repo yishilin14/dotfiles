@@ -37,6 +37,7 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     (chinese :variables)
      (auto-completion :variables
                       auto-completion-return-key-behavior 'complete
                       auto-completion-tab-key-behavior 'cycle
@@ -60,7 +61,7 @@ values."
      javascript
      (latex :variables
             latex-enable-auto-fill t
-            )
+            latex-build-command "LaTeX")
      markdown
      org
      (python :variables
@@ -375,10 +376,12 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(pyim-dicts
+   (quote
+    ((:name "BigDict-01" :file "/home/yslin/.emacs.d/.cache/pyim-bigdict.pyim.gz" :coding utf-8-unix :dict-type pinyin-dict))))
  '(safe-local-variable-values
    (quote
-    ((TeX-command-extra-options . "-shell-escape")
-     (flycheck-disabled-checkers
+    ((flycheck-disabled-checkers
       (quote
        (c/c++-clang)))
      (flycheck-gcc-language-standard . c++11)
