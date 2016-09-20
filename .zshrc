@@ -23,9 +23,41 @@ alias -s c=vi
 alias -s cpp=vi
 alias -s tex=vi
 alias zz="source ~/.zshrc"
-alias mntcse="sshfs yslin@linux1:/uac/gds/yslin ~/unixfolder"
-alias mntgwcse="sshfs yslin@gw.cse.cuhk.edu.hk:/uac/gds/yslin ~/unixfolder"
 alias ls="ls -color=auto"
+
+# Smart extract function
+extract () {
+  if [ $# != 1 ]
+  then
+    echo
+    echo "  Usage: extract [COMPRESSED_FILENAME]"
+    echo
+  else
+    if [ -f $1 ]
+    then
+      case $1 in
+        *.tar)       tar -xvf  $1  ;;
+        *.tgz)       tar -xvzf $1  ;;
+        *.tar.gz)    tar -xvzf $1  ;;
+        *.tbz2)      tar -xvjf $1  ;;
+        *.tar.bz2)   tar -xvjf $1  ;;
+        *.gz)        gunzip    $1  ;;
+        *.bz2)       bunzip2   $1  ;;
+        *.zip)       unzip     $1  ;;
+        *.7z)        7z x      $1  ;;
+        *)           echo "  '$1' file type unknown" ;;
+      esac
+    else
+      echo "  '$1' is not a regular file"
+      echo
+    fi
+  fi
+}
+
+include () {
+    [[ -f "$1" ]] && source "$1"
+}
+include .zshrc_private
 
 source $ZSH/oh-my-zsh.sh
 
