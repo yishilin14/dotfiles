@@ -456,9 +456,7 @@ let g:delimitMate_expand_cr = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YouCompleteMe 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-" let g:ycm_global_ycm_extra_conf = '.ycm_extra_conf.py'
 " now all the dianostics can be opened with the :lopen and :lclose commands
 let g:ycm_always_populate_location_list = 1
 let g:ycm_error_symbol = '>>'
@@ -470,6 +468,7 @@ endif
 let g:ycm_semantic_triggers.tex = [
     \ 're!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*'
     \ ]
+let g:ycm_python_binary_path = 'python'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
@@ -483,6 +482,8 @@ let g:SuperTabCrMapping                = 0
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+let g:UltiSnipsUsePythonVersion = 3
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Source Explorer
