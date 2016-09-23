@@ -164,9 +164,11 @@ bar {
 }
 
 # Floating enable
-for_window [class="google-chrome" instance="crx_nckgahadagoaajjgafhacjanaoiihapd"] floating enable move absolute position 1640 px 575 px 
+# for_window [class="google-chrome" instance="crx_nckgahadagoaajjgafhacjanaoiihapd"] floating enable move absolute position 1640 px 575 px 
+for_window [class="google-chrome" instance="crx_nckgahadagoaajjgafhacjanaoiihapd"] floating enable sticky disable move to workspace 10
 for_window [class="Skype"] floating enable sticky disable move to workspace 10
 for_window [class="Pidgin"] floating enable sticky disable move to workspace 10
+for_window [class="Hangouts"] floating enable sticky disable move to workspace 10
 for_window [class="feh"] floating enable
 
 # Moving window
