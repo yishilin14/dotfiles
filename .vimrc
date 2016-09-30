@@ -483,7 +483,12 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-let g:UltiSnipsUsePythonVersion = 3
+if has("unix") 
+    let s:uname = system("uname")
+    if s:uname == "Linux\n"
+        let g:UltiSnipsUsePythonVersion = 3
+    endif
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Source Explorer
