@@ -343,11 +343,26 @@ layers configuration. You are free to put any user code."
         '(("Okular" "okular --unique %o#src:%n`pwd`/./%b")
           ("Skim" "displayline -b -g %n %o %b")
           ("Zathura" "zathura-sync.sh %n:1:%b %o")))
+  (defadvice LaTeX-fill-region-as-paragraph (around LaTeX-sentence-filling)
+    "Start each sentence on a new line."
+    (let ((from (ad-get-arg 0))
+          (to-marker (set-marker (make-marker) (ad-get-arg 1)))
+          tmp-end)
+      (while (< from (marker-position to-marker))
+        (forward-sentence)
+        ;; might have gone beyond to-marker --- use whichever is smaller:
+        (ad-set-arg 1 (setq tmp-end (min (point) (marker-position to-marker))))
+        ad-do-it
+        (ad-set-arg 0 (setq from (point)))
+        (unless (or
+                 (bolp)
+                 (texmathp) ;; no newline in math env
+                 (looking-at "\\s *$"))
+          (LaTeX-newline)))
+      (set-marker to-marker nil)))
+  (ad-activate 'LaTeX-fill-region-as-paragraph)
 
   ;;==c/c++===============================================================
-  ;; Bind clang-format-region to C-M-tab in all modes:
-  (global-set-key [C-M-tab] 'clang-format-region)
-  ;; Bind clang-format-buffer to tab on the c++-mode only:
   (add-hook 'c++-mode-hook
             (lambda ()
               (setq company-clang-arguments '("-std=c++11"))
@@ -355,6 +370,7 @@ layers configuration. You are free to put any user code."
               (setq flycheck-cppcheck-language-standard "c++11")
               (setq flycheck-clang-language-standard "c++11")
               (define-key c++-mode-map [f7] 'clang-format-buffer)
+              (define-key c++-mode-map [tab] 'clang-format-region)
               ))
   (setq company-idle-delay 0)
   ;; http://stackoverflow.com/questions/6860750/how-to-enable-flyspell-mode-in-emacs-for-all-files-and-all-major-modes
@@ -400,6 +416,9 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (auctex dash insert-shebang hide-comnt anzu flyspell-correct helm-purpose window-purpose async anaconda-mode yasnippet magit-popup pug-mode web-mode py-isort pip-requirements persp-mode paradox org-plus-contrib neotree mwim move-text macrostep less-css-mode js2-refactor helm-projectile helm-ag git-gutter-fringe ggtags fish-mode evil-unimpaired evil-mc eshell-prompt-extras dumb-jump company-shell cmake-mode chinese-pyim auto-yasnippet ace-window ace-link iedit smartparens undo-tree ycmd flycheck helm helm-core markdown-mode projectile magit git-commit with-editor f js2-mode s zeal-at-point yapfify xterm-color ws-butler window-numbering which-key web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit stickyfunc-enhance srefactor spotify spinner spacemacs-theme spaceline smeargle slim-mode shell-pop seq scss-mode sass-mode restart-emacs request-deferred rainbow-mode rainbow-identifiers rainbow-delimiters quelpa pyvenv pytest pyenv-mode popwin pkg-info pcre2el pangu-spacing orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file multiple-cursors multi-term mmm-mode markdown-toc magit-gitflow lorem-ipsum livid-mode live-py-mode linum-relative link-hint json-mode js-doc jade-mode info+ indent-guide imenu-list ido-vertical-mode hydra hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-spotify helm-pydoc helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-dash helm-css-scss helm-cscope helm-company helm-c-yasnippet google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter gh-md flyspell-correct-helm flycheck-ycmd flycheck-pos-tip flx-ido find-by-pinyin-dired fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z esh-help emmet-mode elisp-slime-nav disaster diff-hl define-word cython-mode company-ycmd company-web company-tern company-statistics company-c-headers company-auctex company-anaconda column-enforce-mode color-identifiers-mode coffee-mode clean-aindent-mode clang-format chinese-pyim-basedict base16-theme auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-pinyin ace-jump-helm-line ac-ispell)))
  '(pyim-dicts
    (quote
     ((:name "BigDict-01" :file "/home/yslin/.emacs.d/.cache/pyim-bigdict.pyim.gz" :coding utf-8-unix :dict-type pinyin-dict))))
