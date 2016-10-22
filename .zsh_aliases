@@ -1,0 +1,11 @@
+#####################################################
+# alias 
+#####################################################
+alias -s c=vi
+alias -s cpp=vi
+alias -s tex=vi
+alias zz="source ~/.zshrc"
+alias ls="ls -color=auto"
+alias emacst="emacsclient -t"
+alias emacsc="emacsclient -c -a emacs"
+

@@ -16,15 +16,6 @@ DISABLE_UPDATE_PROMPT=true
 
 plugins=(git sudo autojump command-not-found)
 
-#####################################################
-# alias 
-#####################################################
-alias -s c=vi
-alias -s cpp=vi
-alias -s tex=vi
-alias zz="source ~/.zshrc"
-alias ls="ls -color=auto"
-
 # Smart extract function
 extract () {
   if [ $# != 1 ]
@@ -57,7 +48,13 @@ extract () {
 include () {
     [[ -f "$1" ]] && source "$1"
 }
-include .zshrc_private
+
+if [ ~/.zshrc_private ]; then
+    source ~/.zshrc_private;
+fi
+if [ ~/.zsh_aliases ]; then
+    source ~/.zsh_aliases;
+fi
 
 source $ZSH/oh-my-zsh.sh
 
