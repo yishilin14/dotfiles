@@ -78,4 +78,3 @@
 .zgen/
 .zshrc.pre-oh-my-zsh
 .zshrc_private
-bin/
