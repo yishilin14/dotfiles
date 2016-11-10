@@ -33,6 +33,7 @@
 .dmrc
 .dropbox-dist/
 .dropbox/
+.electron/
 .emacs.d/
 .esd_auth
 .fehbg
@@ -54,6 +55,7 @@
 .lesshst
 .local/
 .minecraft/
+.node-gyp/
 .npm/
 .nv/
 .nvidia-settings-rc
@@ -64,6 +66,7 @@
 .plotly/
 .purple/
 .rstudio-desktop/
+.sogouinput/
 .ssh/
 .subversion/
 .texlive/
@@ -78,3 +81,4 @@
 .zgen/
 .zshrc.pre-oh-my-zsh
 .zshrc_private
+
