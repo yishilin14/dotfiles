@@ -194,3 +194,4 @@ no_focus [window_role="pop-up"]
 exec --no-startup-id google-chrome-stable
 exec --no-startup-id spotify
 exec --no-startup-id emacs --daemon
+exec --no-startup-id sogou-autostart
