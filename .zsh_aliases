@@ -7,4 +7,5 @@ alias -s tex=vi
 alias zz="source ~/.zshrc"
 alias emacst="emacsclient -t"
 alias emacsc="emacsclient -c -a emacs"
+alias make="make -j8"
 
