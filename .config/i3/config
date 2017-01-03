@@ -157,6 +157,9 @@ bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
 bindsym XF86AudioMute exec amixer -q set Master mute
 
+# Pidgin
+bindsym $mod+p exec pidgin
+
 # Spotify
 bindsym F1 exec playerctl play-pause
 bindsym F2 exec playerctl next
@@ -195,3 +198,4 @@ exec --no-startup-id google-chrome-stable
 exec --no-startup-id spotify
 exec --no-startup-id emacs --daemon
 exec --no-startup-id sogou-autostart
+exec --no-startup-id pidgin
