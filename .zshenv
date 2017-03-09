@@ -9,6 +9,8 @@ if [[ `uname` == "Linux" ]]; then
     export ALTERNATE_EDITOR=""
     export EDITOR="emacsclient -t"                  # $EDITOR should open in terminal
     export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI with non-daemon as alternate
+    export PATH=/home/yslin/.gem/ruby/2.4.0/bin:$PATH
+    export PATH=/home/yslin/anaconda3/bin:$PATH
 fi
 
 if [[ `uname` == "Darwin" ]]; then

@@ -8,5 +8,3 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
-# added by Anaconda3 4.0.0 installer
-export PATH="/home/yslin/anaconda3/bin:$PATH"
